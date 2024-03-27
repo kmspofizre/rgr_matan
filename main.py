@@ -1,16 +1,27 @@
-# This is a sample Python script.
+from math_funtions import *
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+a = 1
+b = 2
+n = 10000
+left_mode = 1  # способ выбора кси при вычислении методом прямоугольников 1 - левая граница, 2 - правая граница, 3 - случайный выбор из промежутка
+right_mode = 2
+random_mode = 3
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    partition = get_partition(a, b, n)
+    print(
+        f"Результат, полученный прямоугольников (берется левая граница в каждом промежутке): "
+        f" {rectangle_method(a, b, n, partition, left_mode, 'x ** 2')}")
+    print()
+    print(
+        f"Результат, полученный методом прямоугольников (берется правая граница в каждом промежутке): "
+        f" {rectangle_method(a, b, n, partition, right_mode, 'x ** 2')}")
+    print()
+    print(
+        f"Результат, полученный прямоугольников (берется случаное значение из каждого промежутка): "
+        f" {rectangle_method(a, b, n, partition, random_mode, 'x ** 2')}")
+    print()
+    print(f"Результат, полученный методом трапеций: {trapezoidal_method(a, b, n, partition, 'x ** 2')}")
+    print()
+    print(f"Результат, полученный методом Симпсона: {simpson_method(a, b, n, partition, 'x ** 2')}")
