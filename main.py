@@ -31,4 +31,5 @@ if __name__ == '__main__':
     print(f"Результат, полученный методом Симпсона: {simpson_method(a, b, n, partition, 'x ** 2')}")
     print()
     print(f"MSE: {make_mean_squared_error_graph(a, b, 10, 1000, '2', 'x ** 2')}")
+    print()
     print(f"MAE: {make_mean_absolute_error_graph(a, b, 10, 1000, '2', 'x ** 2')}")
