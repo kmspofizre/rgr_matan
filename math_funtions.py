@@ -8,7 +8,7 @@ def get_partition(a, b, n):
     return partition
 
 
-def rectangle_method(a, b, n, partition, mode, function):
+def rectangle_method(a, b, n, partition, mode, function, print_mode=True):
     left_edge = min(a, b)
     current_left = left_edge
     current_right = current_left + partition
@@ -24,11 +24,12 @@ def rectangle_method(a, b, n, partition, mode, function):
                                  {"x": random.uniform(current_left, current_right)})) * (current_right - current_left)
         current_left = current_right
         current_right = current_left + partition
-    print(f"Время выполнения методом прямоугольников: {time.time() - start_time}")
+    if print_mode:
+        print(f"Время выполнения методом прямоугольников: {time.time() - start_time}")
     return integral_sum
 
 
-def trapezoidal_method(a, b, n, partition, function):
+def trapezoidal_method(a, b, n, partition, function, print_mode=True):
     left_edge = min(a, b)
     current_left = left_edge
     current_right = current_left + partition
@@ -40,11 +41,12 @@ def trapezoidal_method(a, b, n, partition, function):
         integral_sum += (fl + fr) * ((current_right - current_left) / 2)
         current_left = current_right
         current_right = current_left + partition
-    print(f"Время выполнения методом трапеций: {time.time() - start_time}")
+    if print_mode:
+        print(f"Время выполнения методом трапеций: {time.time() - start_time}")
     return integral_sum
 
 
-def simpson_method(a, b, n, partition, function):
+def simpson_method(a, b, n, partition, function, print_mode=True):
     left_edge = min(a, b)
     current_left = left_edge
     current_right = current_left + partition
@@ -57,5 +59,6 @@ def simpson_method(a, b, n, partition, function):
         integral_sum += (fl + 4 * fm + fr) * ((current_right - current_left) / 6)
         current_left = current_right
         current_right = current_left + partition
-    print(f"Время выполнения методом Симпсона: {time.time() - start_time}")
+    if print_mode:
+        print(f"Время выполнения методом Симпсона: {time.time() - start_time}")
     return integral_sum
